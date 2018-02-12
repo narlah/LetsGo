@@ -6,8 +6,8 @@ import (
 
 func main() {
 	movies := [...]int{2, 2, 6, 8, 9, 11, 12, 25, 26, 46}
-	var flightLen int = 5
-	f.Printf("result is : %s", checkInFlight(movies, flightLen))
+	flightLen := 5
+	f.Printf("result is : %v", checkInFlight(movies, flightLen))
 }
 
 func checkInFlight(movies [10]int, flightLen int) bool {

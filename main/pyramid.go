@@ -6,13 +6,13 @@ import (
 )
 
 func main() {
-	number := 20;
+	number := 20
 	for i := 0; i <= number; i++ {
-		if i==20 {
-			fmt.Println(repeatEmpty(number-i) + "#x" +  repeatEmpty(i-1)+ "|z"+ repeatEmpty(i-1) + "#y")
+		if i == 20 {
+			fmt.Println(repeatEmpty(number-i) + "#x" + repeatEmpty(i-1) + "|z" + repeatEmpty(i-1) + "#y")
 			break
 		}
-		fmt.Println(repeatEmpty(number-i) + "#" +  repeatEmpty(i)+ "|"+ repeatEmpty(i) + "#")
+		fmt.Println(repeatEmpty(number-i) + "#" + repeatEmpty(i) + "|" + repeatEmpty(i) + "#")
 
 	}
 
@@ -22,6 +22,6 @@ func main() {
 
 }
 
-func repeatEmpty(i int) string{
+func repeatEmpty(i int) string {
 	return strings.Repeat(" ", i)
 }

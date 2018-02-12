@@ -1,6 +1,6 @@
 // Single line comment
 /* Multi-
- line comment */
+line comment */
 
 // A package clause starts every source file.
 // Main is a special name declaring an executable rather than a library.
@@ -8,12 +8,12 @@ package main
 
 // Import declaration declares library packages referenced in this file.
 import (
-"fmt"       // A package in the Go standard library.
-"io/ioutil" // Implements some I/O utility functions.
-m "math"    // Math library with local alias m.
-"net/http"  // Yes, a web server!
-"os"        // OS functions like working with the file system
-"strconv"   // String conversions.
+	"fmt"       // A package in the Go standard library.
+	"io/ioutil" // Implements some I/O utility functions.
+	m "math"    // Math library with local alias m.
+	"net/http"  // Yes, a web server!
+	"os"        // OS functions like working with the file system
+	"strconv"   // String conversions.
 )
 
 // A function definition. Main is special. It is the entry point for the
@@ -70,7 +70,7 @@ can include line breaks.` // Same string type.
 	n := byte('\n') // byte is an alias for uint8.
 
 	// Arrays have size fixed at compile time.
-	var a4 [4]int           // An array of 4 ints, initialized to all 0.
+	var a4 [4]int                    // An array of 4 ints, initialized to all 0.
 	a5 := [...]int{3, 1, 5, 10, 100} // An array initialized with a fixed size of five
 	// elements, with values 3, 1, 5, 10, and 100.
 
@@ -85,16 +85,16 @@ can include line breaks.` // Same string type.
 	// To append elements to a slice, the built-in append() function is used.
 	// First argument is a slice to which we are appending. Commonly,
 	// the array variable is updated in place, as in example below.
-	s := []int{1, 2, 3}     // Result is a slice of length 3.
-	s = append(s, 4, 5, 6)  // Added 3 elements. Slice now has length of 6.
-	fmt.Println(s) // Updated slice is now [1 2 3 4 5 6]
+	s := []int{1, 2, 3}    // Result is a slice of length 3.
+	s = append(s, 4, 5, 6) // Added 3 elements. Slice now has length of 6.
+	fmt.Println(s)         // Updated slice is now [1 2 3 4 5 6]
 
 	// To append another slice, instead of list of atomic elements we can
 	// pass a reference to a slice or a slice literal like this, with a
 	// trailing ellipsis, meaning take a slice and unpack its elements,
 	// appending them to slice s.
 	s = append(s, []int{7, 8, 9}...) // Second argument is a slice literal.
-	fmt.Println(s)  // Updated slice is now [1 2 3 4 5 6 7 8 9]
+	fmt.Println(s)                   // Updated slice is now [1 2 3 4 5 6 7 8 9]
 
 	p, q := learnMemory() // Declares p, q to be type pointer to int.
 	fmt.Println(*p, *q)   // * follows a pointer. This prints two ints.
@@ -166,8 +166,8 @@ func learnFlowControl() {
 	case 42:
 		// Cases don't "fall through".
 		/*
-		There is a `fallthrough` keyword however, see:
-		  https://github.com/golang/go/wiki/Switch#fall-through
+			There is a `fallthrough` keyword however, see:
+			  https://github.com/golang/go/wiki/Switch#fall-through
 		*/
 	case 43:
 		// Unreached.
@@ -257,7 +257,7 @@ func learnDefer() (ok bool) {
 	return true
 }
 
-// Define Stringer as an interface type with one method, String.
+// Stringer Define as an interface type with one method, String.
 type Stringer interface {
 	String() string
 }
@@ -390,4 +390,3 @@ func requestServer() {
 	body, err := ioutil.ReadAll(resp.Body)
 	fmt.Printf("\nWebserver said: `%s`", string(body))
 }
-
