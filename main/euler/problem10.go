@@ -1,9 +1,9 @@
 package main
 
 import (
+	"fmt"
 	"math"
 	m "math/big"
-	"fmt"
 )
 
 const N = 2000000
@@ -50,8 +50,7 @@ func main() {
 	}
 	bigResult := m.NewInt(0)
 	for _, i := range primes {
-		fmt.Println(i)
 		bigResult.Add(bigResult, m.NewInt(int64(i)))
 	}
-	fmt.Println(bigResult)
+	fmt.Printf("The sum of the primes between 0 and %d is equal to %v \n", N, bigResult)
 }

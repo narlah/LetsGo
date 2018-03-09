@@ -36,7 +36,7 @@ func main() {
 	}
 	fmt.Println()
 	res := calculateProduct(maxIndex, b, window) //should be 5832 for window - 4
-	fmt.Printf("MaxIndex : %d  | This was at this index : %s | Product is is : %f", maxIndex, string(b[maxIndex: maxIndex+window]),res)
+	fmt.Printf("MaxIndex : %d  | This was at this index : %s | Product is is : %f \n", maxIndex, string(b[maxIndex:maxIndex+window]), res)
 }
 func calculateProduct(maxIndex int, b []byte, window int) float64 {
 	var res float64 = 1
