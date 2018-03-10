@@ -19,6 +19,7 @@ type transaction struct {
 
 func main() {
 	var lastTransactions []transaction
+	go cleanQueue(&lastTransactions)
 	for i := 0; i <= 100; i++ {
 		receive("Transaction with id : "+strconv.Itoa(i), &lastTransactions)
 		if i < 50 {
@@ -41,7 +42,16 @@ func receive(transMsg string, lastTransactions *[]transaction) {
 	fmt.Printf("Send msg %s \n", transMsg) //sending it
 	*    lastTransactions = append(*lastTransactions, transaction{transMsg, currentTime})
 }
-
+func cleanQueue(lastTransactions *[]transaction) {
+	for i := 0; i < 10; i++ {
+		fmt.Print(strconv.Itoa(len(*lastTransactions)) + " =>")
+		if len(*lastTransactions) > 26 {
+			*lastTransactions = (*lastTransactions)[14:]
+		}
+		fmt.Println(len(*lastTransactions))
+		time.Sleep(1000 * time.Millisecond)
+	}
+}
 func (t transaction) String() string {
 	return t.data + "  current time : " + strconv.FormatInt(getMilseconds(t.time), 10)
 }
