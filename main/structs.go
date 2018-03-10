@@ -1,13 +1,21 @@
 package main
+
 import (
 	"fmt"
 )
-type stt struct{
+
+type stt struct {
 	a int
 	b int
 	s string
 }
+
 func main() {
-	struct1 := stt{1 , 2 ,  "asda"}
-	fmt.Println(struct1)
+	var sttSlice []stt
+	for i := 0; i < 10; i++ {
+		struct1 := stt{i, i*10, "a"}
+		sttSlice = append(sttSlice, struct1)
+	}
+
+	fmt.Println(sttSlice)
 }
