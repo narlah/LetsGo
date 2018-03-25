@@ -66,8 +66,8 @@ func (this *LRUCache) Put(key int, value int) {
 	}
 	if len(this.lruMap) == this.mxCapacity {
 		delete(this.lruMap, this.pqLast.entry.key)
-		this.pqLast = this.pqLast.forward
 		if this.pqLast != nil {
+			this.pqLast = this.pqLast.forward
 			this.pqLast.backward = nil
 		}
 	}
