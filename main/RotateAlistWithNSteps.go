@@ -25,17 +25,18 @@ func main() {
 		last = tempDlr
 	}
 	printList(root)
+
 	tempDlr = root
-	for n:=3;n>0 && tempDlr!=nil;n-- {
+	for n := 3; n > 0 && tempDlr != nil; n-- {
 		tempDlr = tempDlr.backward
 	}
 	println(strconv.QuoteRune(last.rune))
-	last.backward, root , tempDlr.backward= root, tempDlr.backward, nil
-printList(root)
+	last.backward, root, tempDlr.backward = root, tempDlr.backward, nil
+	printList(root)
 }
 func printList(root *DoubleLinkedRune) {
 	fmt.Println("\n---------------------------")
-tempDlr := root
+	tempDlr := root
 	for tempDlr != nil {
 		fmt.Print(strconv.QuoteRune(tempDlr.rune), " ")
 		tempDlr = tempDlr.backward

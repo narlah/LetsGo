@@ -40,7 +40,7 @@ func receive(transMsg string, lastTransactions *[]transaction) {
 		}
 	}
 	fmt.Printf("Send msg %s \n", transMsg) //sending it
-	*    lastTransactions = append(*lastTransactions, transaction{transMsg, currentTime})
+	*lastTransactions = append(*lastTransactions, transaction{transMsg, currentTime})
 }
 func cleanQueue(lastTransactions *[]transaction) {
 	for i := 0; i < 10; i++ {
