@@ -15,7 +15,7 @@ func main() {
 	}
 	var m = make(map[int32][]int)
 	flag := 0
-	for at := 0; at < 10000000; at++ {
+	for at := 0; at < 1000000000; at++ {
 		if flag == 50000 {
 			var m runtime.MemStats
 			runtime.ReadMemStats(&m)
@@ -23,20 +23,29 @@ func main() {
 			flag = 0
 		}
 		flag++
-		shuffleArray(cards)
-		hash := int(0)
-		for j := 0; j < 10; j++ {
-			hash += cards[j] * (j * 10)
-		}
-		collision, ok := m[int32(hash)]
+		cards := cards[:]
 
+		shuffleArray(cards)
+		hash := getHash(cards)
+		fmt.Printf("%d %v \n", hash, cards)
+		collision, ok := m[int32(hash)]
 		if ok {
-			fmt.Printf("%v  <->  %v", collision, cards)
+			fmt.Printf("%d \n %v  \n %v \n", hash, collision, cards)
+			break
 		}
+		m[int32(hash)] = cards
 	}
 	//fmt.Print(cards)
 	elapsed := time.Since(start)
 	fmt.Println(elapsed)
+
+}
+func getHash(cards []int) int {
+	hash := int(0)
+	for j := 0; j < 10; j++ {
+		hash += cards[j] * (j * 10)
+	}
+	return hash
 }
 
 func shuffleArray(ar []int) {
