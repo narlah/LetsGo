@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println(generateParenthesis(2))
+	fmt.Println(generateParenthesis(4))
 }
 
 func generateParenthesis(n int) []string {
@@ -15,15 +15,11 @@ func recGenerateParenthesis(n int, currentResult string, currentlyOpened int, cu
 	if currentlyClosed == n && currentlyOpened == n {
 		return append(res, currentResult)
 	}
-	var (
-		k  []string
-		k1 []string
-	)
 	if currentlyOpened < n {
-		k = recGenerateParenthesis(n, currentResult+"(", currentlyOpened+1, currentlyClosed, res)
+		res = recGenerateParenthesis(n, currentResult+"(", currentlyOpened+1, currentlyClosed, res)
 	}
 	if currentlyClosed < n && currentlyOpened > currentlyClosed {
-		k1 = recGenerateParenthesis(n, currentResult+")", currentlyOpened, currentlyClosed+1, res)
+		res = recGenerateParenthesis(n, currentResult+")", currentlyOpened, currentlyClosed+1, res)
 	}
-	return append(k, k1...)
+	return res
 }
