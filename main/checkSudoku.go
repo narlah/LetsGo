@@ -18,20 +18,19 @@ func main() {
 	//	{'.', '.', '.',  '4', '1', '9',  '.', '.', '5'},
 	//	{'.', '.', '.',  '.', '8', '.',  '.', '7', '9'}}
 
-
-	var sudoku =  [][]byte{
-	{'.','.','4','.','.','.','6','3','.'},
-	{'.','.','.','.','.','.','.','.','.'},
-	{'5','.','.','.','.','.','.','9','.'},
-	{'.','.','.','5','6','.','.','.','.'},
-	{'4','.','3','.','.','.','.','.','1'},
-	{'.','.','.','7','.','.','.','.','.'},
-	{'.','.','.','5','.','.','.','.','.'},
-	{'.','.','.','.','.','.','.','.','.'},
-	{'.','.','.','.','.','.','.','.','.'},
+	var sudoku = [][]byte{
+		{'.', '.', '4', '.', '.', '.', '6', '3', '.'},
+		{'.', '.', '.', '.', '.', '.', '.', '.', '.'},
+		{'5', '.', '.', '.', '.', '.', '.', '9', '.'},
+		{'.', '.', '.', '5', '6', '.', '.', '.', '.'},
+		{'4', '.', '3', '.', '.', '.', '.', '.', '1'},
+		{'.', '.', '.', '7', '.', '.', '.', '.', '.'},
+		{'.', '.', '.', '5', '.', '.', '.', '.', '.'},
+		{'.', '.', '.', '.', '.', '.', '.', '.', '.'},
+		{'.', '.', '.', '.', '.', '.', '.', '.', '.'},
 	}
 
-		f.Print(isValidSudoku(sudoku))
+	f.Print(isValidSudoku(sudoku))
 }
 
 func isValidSudoku(board [][]byte) bool {
@@ -45,7 +44,6 @@ func isValidSudoku(board [][]byte) bool {
 			}
 		}
 	}
-	//printSudoku(sudokuByte)
 	return isValidSudokuByte(sudokuByte);
 }
 
@@ -66,7 +64,7 @@ func isValidSudokuByte(board [9][9]byte) bool {
 			return false
 		}
 	}
-	var boxPositions = [][]byte{ //boxes
+	var boxPositions = [][]byte{//boxes
 		{0, 0}, {3, 0}, {6, 0},
 		{0, 3}, {3, 3}, {6, 3},
 		{0, 6}, {3, 6}, {6, 6}}
@@ -100,18 +98,12 @@ func isThoseNineValid(ringWraiths [9]byte) bool { //Nine for Mortal Men doomed t
 	return true
 }
 
-func printSudoku (board [9][9]byte) {
-	for _,z := range board {
-		f.Printf("%d " , z)
-		for _,b := range z {
+func printSudoku(board [9][9]byte) {
+	for _, z := range board {
+		f.Printf("%d ", z)
+		for _, b := range z {
 			f.Print(b)
 		}
 		f.Print("\n")
 	}
 }
-
-
-
-
-
-
