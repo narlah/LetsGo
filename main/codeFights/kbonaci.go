@@ -3,38 +3,52 @@ package main
 import (
 	"fmt"
 	m "math/big"
-	. "container/list"
 )
 
 //1 ≤ n ≤ 10^5
 //1 ≤ k ≤ 10^3
 func main() {
-	fmt.Println(kbonacci(3, 4)) //5
+	fmt.Printf("\nkibonaciiii %s \n", kbonacci(10, 15))
 }
 
-func kbonacci(k int, n int) string {
-	if n <= k {
+func kbonacci(kParam int, n int) string {
+	if n < kParam {
 		return string(1)
 	}
-	listR := new(List)
+	window := make([]*m.Int, kParam+1)
 
-	for i := 0; i < k; i++ {
-		listR.PushBack(m.NewInt(1))
+	for i := 0; i < kParam; i++ {
+		window[i] = m.NewInt(1)
 	}
-	//// Iterate through list and print its contents.
-	//for e := listR.Front(); e != nil; e = e.Next() {
-	//	fmt.Println(e.Value)
-	//}
+	window[kParam] = m.NewInt(int64(kParam))
+	k := kParam
+	//printListR(window)
+	two := m.NewInt(2)
+	/*
+        for (int i = k; i <= n; i++) {
+            int ix = i % k;
+            BigInteger a = window[(i + k - 1) % k];
+            BigInteger b = window[ix];
+            BigInteger c = a.multiply(two).subtract(b);
+            window[ix] = c;
+        }
 
-	var res = m.NewInt(0)
-	for z := 0; z < n-k; z++ {
-		res = m.NewInt(0).Sub(parse(listR.Front().Value), res).Add(parse(listR.Back().Value), res)
-		listR.Remove(listR.Front())
-		listR.PushBack(res)
+        return window[n % k].toString(10);
+	*/
+
+	for z := k; z <= n; z++ {
+		ix := z % k
+		a := window [(z+k-1)%k ]
+		b := window [ix]
+		window[ix].Mul(a, two)
+		window[ix].Sub(window[ix], b)
+		fmt.Println(window[ix].Text(10))
 	}
-	return res.Text(10)
+	return window[n%(k-1)].Text(10)
 }
-
-func parse(in m.Int) *m.Int{
-	return &in
+func printListR(window []*m.Int) {
+	for l := 0; l < len(window); l++ {
+		fmt.Println(window[l].Text(10))
+	}
+	fmt.Println()
 }
