@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	arr := dashes(4)
+	arr := dashes(12)
 	for i := 0; i < len(arr); i++ {
 		fmt.Printf("[%s]\n",arr[i])
 	}
