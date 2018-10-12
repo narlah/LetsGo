@@ -4,11 +4,11 @@ import "fmt"
 
 //
 // Definition for binary tree:
-type Tree struct {
-  Value interface{}
-  Left *Tree
-  Right *Tree
-}
+//type Tree struct {
+//  Value interface{}
+//  Left *Tree
+//  Right *Tree
+//}
 func hasPathWithGivenSum(t *Tree, s int) bool {
 	if t == nil {return false}
 	val := s-t.Value.(int)
