@@ -7,14 +7,14 @@ import (
 
 func main() {
 
-	f.Printf("fib number for 10 : %d \n ", fibonaciInt(10))
-	f.Printf("fib number for 10 : %d \n ", int(binetFormulla(10)))
+    f.Printf("int : fib number for 10 : %d \n ", fibonaciInt(10))
+    f.Printf("formula : fib number for 10 : %d \n ", int(binetFormulla(10)))
 
-	f.Printf("fib number for 15 : %d \n ", fibonaciInt(15))
-	f.Printf("fib number for 10 : %d \n ", int(binetFormulla(15)))
+    f.Printf("int : fib number for 15 : %d \n ", fibonaciInt(15))
+	f.Printf("formula fib number for 15 : %d \n ", int(binetFormulla(15)))
 
-	f.Printf("fib number for 100 : %d \n ", fibonaciInt(50))
-	f.Printf("fib number for 10 : %d \n ", int(binetFormulla(50)))
+	f.Printf("int fib number for 50 : %d \n ", fibonaciInt(50))
+	f.Printf("formula fib number for 50 : %d \n ", int64(binetFormulla(50)))
 }
 
 func fibonaciInt(n int) int {
@@ -32,8 +32,9 @@ func fibonaciInt(n int) int {
 	return sum
 }
 
-func binetFormulla(n int) float64 {
-	sqrt5 := m.Sqrt(5)
-	finNum := (1 / sqrt5) * (m.Pow((1+sqrt5)/2, float64(n)) - m.Pow((1-sqrt5)/2, float64(n)))
-	return finNum
+func binetFormulla(num int) int {
+	sqrt5 := float64(m.Sqrt(5))
+    n := float64(num)
+    return int((m.Pow((1+sqrt5)/2, n) - m.Pow((1-sqrt5)/2, (n))) / sqrt5 +0.5)
+
 }
